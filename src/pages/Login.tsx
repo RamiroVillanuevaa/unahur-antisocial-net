@@ -83,7 +83,7 @@ function Login() {
               <Form.Label>NickName</Form.Label>
               <Form.Control
                 type="text"
-                placeholder="Por ejemplo: luna"
+                placeholder="Por ejemplo: Linus"
                 value={nickName}
                 onChange={(evento) => setNickName(evento.target.value)}
                 isInvalid={errorNickName !== ''}
