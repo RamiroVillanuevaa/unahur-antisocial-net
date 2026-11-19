@@ -3,7 +3,6 @@ import type { FormEvent } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import Container from 'react-bootstrap/Container'
 import Card from 'react-bootstrap/Card'
-import Badge from 'react-bootstrap/Badge'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import Alert from 'react-bootstrap/Alert'
@@ -132,7 +131,13 @@ function DetallePost() {
 
       <Card className="tarjeta-post mt-3">
         <Card.Body>
-          {post.User && <Card.Subtitle className="autor mb-2">@{post.User.nickName}</Card.Subtitle>}
+          {post.User && (
+            <Card.Subtitle className="mb-2">
+              <Link to={`/usuario/${post.UserId}`} className="autor">
+                @{post.User.nickName}
+              </Link>
+            </Card.Subtitle>
+          )}
           <small className="text-muted d-block mb-3">
             Publicado el {new Date(post.createdAt).toLocaleDateString('es-AR')}
           </small>
@@ -147,11 +152,12 @@ function DetallePost() {
             </div>
           )}
 
-          <div>
+          {/* las etiquetas, iguales a las de la card del feed */}
+          <div className="etiquetas-post">
             {post.Tags?.map((tag) => (
-              <Badge key={tag.id} className="etiqueta me-1">
+              <span key={tag.id} className="etiqueta-post">
                 #{tag.name}
-              </Badge>
+              </span>
             ))}
           </div>
         </Card.Body>
@@ -163,10 +169,12 @@ function DetallePost() {
         {comentarios.length === 0 ? (
           <p className="text-muted">Todavía no hay comentarios. ¡Escribí el primero!</p>
         ) : (
-          <ListGroup className="mb-3">
+          <ListGroup className="comentarios mb-3">
             {comentarios.map((comentario) => (
               <ListGroup.Item key={comentario.id}>
-                <strong>@{comentario.User ? comentario.User.nickName : 'usuario'}</strong>{' '}
+                <Link to={`/usuario/${comentario.UserId}`} className="autor-comentario">
+                  @{comentario.User ? comentario.User.nickName : 'usuario'}
+                </Link>{' '}
                 <small className="text-muted">
                   · {new Date(comentario.createdAt).toLocaleDateString('es-AR')}
                 </small>
@@ -177,7 +185,7 @@ function DetallePost() {
         )}
 
         {usuario ? (
-          <Form onSubmit={enviarComentario} noValidate>
+          <Form onSubmit={enviarComentario} noValidate className="caja-comentar">
             <Form.Group className="mb-2" controlId="comentario">
               <Form.Label>Agregar un comentario</Form.Label>
               <Form.Control

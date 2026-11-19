@@ -5,7 +5,6 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Alert from 'react-bootstrap/Alert'
 import Spinner from 'react-bootstrap/Spinner'
-import Button from 'react-bootstrap/Button'
 import PostCard from '../components/PostCard'
 import { UserContext } from '../context/UserContext'
 import { API_URL } from '../api'
@@ -38,7 +37,7 @@ function Home() {
         setTags(dataTags)
       } catch (error) {
         console.error('Error inesperado:', error)
-        setError('No se pudieron cargar las publicaciones. Revisá que el BackEnd esté encendido.')
+        setError('[SERVER/BACKEND ERROR] No se pudieron cargar las publicaciones. Volvé a intentarlo mas tarde.')
       } finally {
         setCargando(false)
       }
@@ -54,45 +53,63 @@ function Home() {
 
   return (
     <>
+      {/* aca arranca la portada */}
       <section className="banner">
         <Container>
-          <h1>UnaHur Anti-Social Net</h1>
-          <p className="lead">La red social para compartir sin apuro: publicá, comentá y leé a tu ritmo.</p>
-          {usuario ? (
-            <Link to="/nuevo-post" className="btn btn-light">
-              Crear una publicación
-            </Link>
-          ) : (
-            <Link to="/registro" className="btn btn-light">
-              Sumate a la comunidad
-            </Link>
-          )}
+          <p className="texto-chico">Hecho por estudiantes de la UNAHUR</p>
+          <h1>
+            Menos scroll. <span className="resaltado">Más charla.</span>
+          </h1>
+          <p className="bajada">
+            Publicá, comentá y leé a tu ritmo. Una comunidad chiquita y tranquila, hecha para charlar.
+          </p>
+          <div className="acciones">
+            {usuario ? (
+              <Link to="/nuevo-post" className="btn btn-primary">
+                Crear una publicación
+              </Link>
+            ) : (
+              <>
+                <Link to="/registro" className="btn btn-primary">
+                  Sumate a la comunidad
+                </Link>
+                <Link to="/login" className="btn btn-outline-dark">
+                  Ya tengo cuenta
+                </Link>
+              </>
+            )}
+          </div>
         </Container>
       </section>
+      {/* aca termina la portada */}
 
       <Container className="py-4">
         <h2 className="mb-3">Publicaciones recientes</h2>
 
+        {/* aca arrancan los filtros por etiqueta */}
         {tags.length > 0 && (
-          <div className="filtros mb-4">
-            <Button
-              size="sm"
-              variant={tagElegida === 0 ? 'primary' : 'outline-primary'}
+          <div className="filtros mb-3">
+            <button
+              className={tagElegida === 0 ? 'chip chip-activo' : 'chip'}
               onClick={() => setTagElegida(0)}
             >
               Todas
-            </Button>
+            </button>
             {tags.map((tag) => (
-              <Button
+              <button
                 key={tag.id}
-                size="sm"
-                variant={tagElegida === tag.id ? 'primary' : 'outline-primary'}
+                className={tagElegida === tag.id ? 'chip chip-activo' : 'chip'}
                 onClick={() => setTagElegida(tag.id)}
               >
                 #{tag.name}
-              </Button>
+              </button>
             ))}
           </div>
+        )}
+        {/* aca terminan los filtros */}
+
+        {!cargando && !error && (
+          <p className="resultados">Mostrando {postsFiltrados.length} publicaciones</p>
         )}
 
         {cargando && (
@@ -122,7 +139,7 @@ function Home() {
             UnaHur Anti-Social Net es un proyecto de estudiantes de la Universidad Nacional de Hurlingham.
             Es una red social chiquita y tranquila: sin algoritmos, sin publicidad y sin contador de likes.
           </p>
-          <p className="frase mb-0">"Menos scroll, más charla."</p>
+          <p className="frase mb-0">"Hecho en Hurlingham. Sin apuro."</p>
         </section>
       </Container>
     </>

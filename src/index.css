@@ -1,37 +1,50 @@
+/* estilos generales de toda la pagina - estilo brutalista
+   colores: papel #f4f1ea, negro #111111, verde acido #c6ff3d, blanco #ffffff, gris #555555 */
+
 :root {
-
-  --color-principal: #5b3fa8;
-  --color-principal-oscuro: #43307c;
-  --color-principal-suave: #ece6fa;
-  --color-fondo: #f6f4fb;
-  --color-texto: #1f1a2e;
-  --color-texto-suave: #6b6580;
-
-  --fuente: 'Plus Jakarta Sans', system-ui, -apple-system, 'Segoe UI', sans-serif;
-  --bs-body-font-family: var(--fuente);
-  --bs-body-color: var(--color-texto);
-  
-  --radio-sm: 8px;
-  --radio: 14px;
-  --radio-lg: 20px;
-
-  --sombra-sm: 0 1px 3px rgba(31, 26, 46, 0.06), 0 1px 2px rgba(31, 26, 46, 0.04);
-  --sombra: 0 4px 14px rgba(31, 26, 46, 0.08);
-  --sombra-lg: 0 12px 28px rgba(31, 26, 46, 0.14);
-
-  --bs-link-color-rgb: 91, 63, 168;
-  --bs-link-hover-color-rgb: 67, 48, 124;
+  --color-principal: #111111;
+  --color-principal-oscuro: #000000;
+  --color-fondo: #f4f1ea;
+  --bs-link-color-rgb: 17, 17, 17;
+  --bs-link-hover-color-rgb: 0, 0, 0;
 }
 
+/* aca arrancan los estilos base */
 body {
-  background-color: var(--color-fondo);
+  background-color: #f4f1ea;
+  color: #111111;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-h1, h2, h3, h4, h5, h6 {
+/* titulos angostos, en mayuscula y bien negros
+   (.h2, .h3... son las clases de bootstrap que usan algunos titulos) */
+h1, h2, h3, h4, h5,
+.h1, .h2, .h3, .h4, .h5 {
+  font-family: 'Arial Narrow', Arial, sans-serif;
   font-weight: 700;
-  letter-spacing: -0.02em;
-  color: var(--color-texto);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #111111;
 }
+
+/* que las imagenes no se salgan de la pantalla */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* texto chico con letras separadas, va arriba de los titulos */
+.texto-chico {
+  display: inline-block;
+  background-color: #111111;
+  color: #c6ff3d;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+}
+/* aca terminan los estilos base */
 
 /* el pie siempre queda abajo */
 #root {
@@ -44,92 +57,322 @@ h1, h2, h3, h4, h5, h6 {
   flex: 1;
 }
 
-/* Botones */
-.btn-primary {
-  --bs-btn-bg: var(--color-principal);
-  --bs-btn-border-color: var(--color-principal);
-  --bs-btn-hover-bg: var(--color-principal-oscuro);
-  --bs-btn-hover-border-color: var(--color-principal-oscuro);
-  --bs-btn-active-bg: var(--color-principal-oscuro);
-  --bs-btn-active-border-color: var(--color-principal-oscuro);
-  --bs-btn-disabled-bg: var(--color-principal);
-  --bs-btn-disabled-border-color: var(--color-principal);
-}
-
-.btn-outline-primary {
-  --bs-btn-color: var(--color-principal);
-  --bs-btn-border-color: var(--color-principal);
-  --bs-btn-hover-bg: var(--color-principal);
-  --bs-btn-hover-border-color: var(--color-principal);
-  --bs-btn-active-bg: var(--color-principal);
-  --bs-btn-active-border-color: var(--color-principal);
-}
-
-/* Barra de navegación */
-.barra {
-  background-color: var(--color-principal-oscuro);
-}
-
-.barra .navbar-brand {
+/* aca arrancan los botones: cuadrados, borde grueso y en mayuscula */
+.btn {
+  border-width: 3px;
+  border-radius: 0;
   font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
 }
 
-.barra .nav-link.active {
+/* el boton principal es verde acido con letras negras */
+.btn-primary {
+  --bs-btn-color: #111111;
+  --bs-btn-bg: #c6ff3d;
+  --bs-btn-border-color: #111111;
+  --bs-btn-hover-color: #c6ff3d;
+  --bs-btn-hover-bg: #111111;
+  --bs-btn-hover-border-color: #111111;
+  --bs-btn-active-color: #c6ff3d;
+  --bs-btn-active-bg: #111111;
+  --bs-btn-active-border-color: #111111;
+  --bs-btn-disabled-color: #111111;
+  --bs-btn-disabled-bg: #c6ff3d;
+  --bs-btn-disabled-border-color: #111111;
+}
+
+/* el de contorno es negro y se rellena al pasar el mouse */
+.btn-outline-primary {
+  --bs-btn-color: #111111;
+  --bs-btn-border-color: #111111;
+  --bs-btn-hover-color: #c6ff3d;
+  --bs-btn-hover-bg: #111111;
+  --bs-btn-hover-border-color: #111111;
+  --bs-btn-active-color: #c6ff3d;
+  --bs-btn-active-bg: #111111;
+  --bs-btn-active-border-color: #111111;
+}
+
+/* los carteles de error, exito e info tambien cuadrados */
+.alert {
+  border: 3px solid #111111;
+  border-radius: 0;
   font-weight: 600;
-  text-decoration: underline;
-  text-underline-offset: 6px;
+  color: #111111;
 }
 
-/* Banner de la Home */
-.banner {
-  background: linear-gradient(135deg, var(--color-principal-oscuro), var(--color-principal));
-  color: white;
-  padding: 2.5rem 0;
+.alert-info {
+  background-color: #ffffff;
+}
+
+.alert-success {
+  background-color: #c6ff3d;
+}
+
+.alert-danger {
+  background-color: #ffd6d6;
+}
+/* aca terminan los botones */
+
+/* aca arranca la barra de navegacion */
+.barra {
+  background-color: #111111;
+  border-bottom: 4px solid #c6ff3d;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* logo y nombre */
+.marca {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* el cuadrado verde con la U */
+.marca-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background-color: #c6ff3d;
+  color: #111111;
+  font-size: 1.3rem;
+}
+
+.marca-resaltada {
+  color: #c6ff3d;
+}
+
+/* boton del menu en el celu */
+.barra .navbar-toggler {
+  border: 2px solid #c6ff3d;
+  border-radius: 0;
+}
+
+/* mobile first: en el celu los links van uno abajo del otro */
+.barra .navbar-nav {
+  gap: 6px;
+  padding-top: 10px;
+}
+
+.barra .navbar-nav .nav-link {
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 12px;
+  border: 2px solid #111111;
+}
+
+.barra .navbar-nav .nav-link:hover {
+  border-color: #c6ff3d;
+  color: #c6ff3d;
+}
+
+/* el link de la pagina donde estas */
+.barra .navbar-nav .nav-link.active {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #111111;
+}
+
+/* nuevo post y registrarse: verde acido para que resalten */
+.barra .navbar-nav .boton-destacado,
+.barra .navbar-nav .boton-destacado.active {
+  background-color: #c6ff3d;
+  border-color: #c6ff3d;
+  color: #111111;
   text-align: center;
 }
 
-.banner h1 {
-  font-size: 1.9rem;
-  font-weight: 700;
+.barra .navbar-nav .boton-destacado:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  color: #111111;
+}
+/* aca termina la barra de navegacion */
+
+/* aca arranca la portada de la Home */
+.banner {
+  background-color: #f4f1ea;
+  border-bottom: 3px solid #111111;
+  padding-top: 48px;
+  padding-bottom: 48px;
 }
 
-/* Filtro por etiquetas */
+.banner h1 {
+  font-size: 3rem;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+/* "mas charla" con fondo verde, como resaltado con fibron */
+.resaltado {
+  background-color: #c6ff3d;
+  padding: 0 8px;
+}
+
+.bajada {
+  font-size: 1.1rem;
+  color: #555555;
+  max-width: 560px;
+}
+
+.acciones {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 24px;
+}
+/* aca termina la portada */
+
+/* aca arrancan los filtros */
 .filtros {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 8px;
 }
 
-/* Tarjeta de publicación */
+/* los botones cuadrados de cada etiqueta */
+.chip {
+  background-color: #ffffff;
+  border: 2px solid #111111;
+  color: #111111;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+}
+
+.chip:hover {
+  background-color: #111111;
+  color: #ffffff;
+}
+
+/* la etiqueta que esta elegida */
+.chip-activo,
+.chip-activo:hover {
+  background-color: #c6ff3d;
+  color: #111111;
+}
+/* aca terminan los filtros */
+
+/* el texto de "mostrando N publicaciones", con letra de maquina de escribir */
+.resultados {
+  font-family: 'Courier New', Courier, monospace;
+  color: #555555;
+}
+
+/* aca arranca la card del post */
 .tarjeta-post {
-  border: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  border: 3px solid #111111;
+  border-radius: 0;
+  background-color: #ffffff;
   overflow: hidden;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
-.row .tarjeta-post:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.14);
+/* al pasar el mouse el pie de la card se pinta de verde */
+.tarjeta-post:hover .pie-post {
+  background-color: #c6ff3d;
 }
 
-.tira-imagenes {
-  display: flex;
-  gap: 2px;
-  height: 180px;
-  background-color: #e9e6f2;
-}
-
-.tira-imagenes img {
-  flex: 1;
-  min-width: 0;
+/* la foto de arriba: todas iguales de alto y recortadas para que no se deformen */
+.imagen-post {
+  width: 100%;
+  height: 200px;
   object-fit: cover;
+  border-bottom: 3px solid #111111;
+  border-radius: 0;
+  background-color: #e5e1d6;
 }
 
-.autor {
-  color: var(--color-principal);
-  font-weight: 600;
+/* el cuerpo es una columna, asi el pie queda siempre abajo de todo */
+.cuerpo-post {
+  display: flex;
+  flex-direction: column;
 }
+
+/* autor a la izquierda y fecha a la derecha */
+.cabecera-post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+/* el nombre del autor es un link a su perfil */
+.autor {
+  color: #111111;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  text-decoration: none;
+  margin: 0;
+}
+
+.autor:hover {
+  color: #111111;
+  background-color: #c6ff3d;
+}
+
+.fecha {
+  font-family: 'Courier New', Courier, monospace;
+  color: #555555;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* las etiquetas: verde acido con borde negro */
+.etiquetas-post {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.etiqueta-post {
+  background-color: #c6ff3d;
+  border: 2px solid #111111;
+  color: #111111;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 2px 8px;
+}
+
+/* el pie ocupa todo el ancho de la card (los margenes negativos le sacan el espacio del body) */
+.pie-post {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  margin-left: -16px;
+  margin-right: -16px;
+  margin-bottom: -16px;
+  padding: 12px 16px;
+  border-top: 3px solid #111111;
+}
+
+.datos-post {
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin: 0;
+}
+/* aca termina la card del post */
 
 /* en el feed se corta a 3 renglones */
 .descripcion-corta {
@@ -140,89 +383,186 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
-.descripcion-completa {
-  font-size: 1.1rem;
-  white-space: pre-wrap;
-}
-
-.etiqueta {
-  background-color: #e4dcf7 !important;
-  color: var(--color-principal-oscuro);
-  font-weight: 500;
-}
-
-/* Detalle de publicación */
+/* aca arranca el detalle del post */
 .detalle {
   max-width: 800px;
 }
 
+.descripcion-completa {
+  font-size: 1.2rem;
+  white-space: pre-wrap;
+}
+
+/* mobile first: en el celu una foto abajo de la otra, desde tablet de a dos */
 .galeria {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.5rem;
+  gap: 12px;
+  margin-bottom: 16px;
 }
 
 .galeria img {
   width: 100%;
-  max-height: 420px;
+  height: 320px;
   object-fit: cover;
-  border-radius: 8px;
-  background-color: #e9e6f2;
+  border: 3px solid #111111;
+  background-color: #e5e1d6;
 }
 
-/* Formularios (login, registro, nuevo post) */
+/* la lista de comentarios: cada uno es una caja separada */
+.comentarios {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.comentarios .list-group-item {
+  background-color: #ffffff;
+  border: 2px solid #111111;
+  border-radius: 0;
+  padding: 12px 16px;
+}
+
+/* el nombre de quien comenta, resaltado en verde y con link a su perfil */
+.autor-comentario {
+  background-color: #c6ff3d;
+  color: #111111;
+  font-weight: 700;
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 0 6px;
+}
+
+.autor-comentario:hover {
+  background-color: #111111;
+  color: #c6ff3d;
+}
+
+/* la caja donde se escribe el comentario */
+.caja-comentar {
+  background-color: #ffffff;
+  border: 3px solid #111111;
+  padding: 16px;
+}
+/* aca termina el detalle del post */
+
+/* aca arrancan los formularios (login, registro, nuevo post) */
 .formulario {
   max-width: 420px;
-  border: none;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  background-color: #ffffff;
+  border: 3px solid #111111;
+  border-radius: 0;
+  padding: 8px;
 }
 
 .formulario-ancho {
   max-width: 640px;
 }
 
-/* Perfil */
+.formulario .form-label,
+.caja-comentar .form-label {
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.formulario .form-control,
+.formulario .form-select,
+.caja-comentar .form-control {
+  border: 2px solid #111111;
+  border-radius: 0;
+}
+
+/* cuando escribis en un campo se pone clarito */
+.formulario .form-control:focus,
+.caja-comentar .form-control:focus {
+  border-color: #111111;
+  background-color: #fbffe9;
+}
+/* los checkbox de las etiquetas: cuadrados y negros */
+.formulario .form-check-input {
+  border: 2px solid #111111;
+  border-radius: 0;
+}
+
+.formulario .form-check-input:checked {
+  background-color: #111111;
+  border-color: #111111;
+}
+
+/* aca terminan los formularios */
+
+/* aca arranca el perfil
+   mobile first: en el celu los datos arriba y los botones abajo */
 .cabecera-perfil {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 16px;
+  background-color: #c6ff3d;
+  border: 3px solid #111111;
+  padding: 24px;
+}
+/* aca termina el perfil */
+
+/* aca arranca sobre nosotros: la unica caja negra de la Home */
+.sobre-nosotros {
+  background-color: #111111;
+  color: #f4f1ea;
+  border: 3px solid #111111;
+  padding: 24px;
 }
 
-/* Sobre nosotros */
-.sobre-nosotros {
-  background-color: white;
-  border-radius: 12px;
-  padding: 1.5rem;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+.sobre-nosotros h2 {
+  color: #c6ff3d;
 }
 
 .frase {
-  font-style: italic;
-  color: var(--color-principal);
-  font-weight: 600;
+  font-family: 'Arial Narrow', Arial, sans-serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #c6ff3d;
 }
+/* aca termina sobre nosotros */
 
-/* Pie de página */
+/* aca arranca el footer */
 .pie {
-  background-color: var(--color-principal-oscuro);
-  color: white;
+  margin-top: 48px;
+  background-color: #111111;
+  border-top: 4px solid #c6ff3d;
+  color: #f4f1ea;
   text-align: center;
-  padding: 1rem;
-  font-size: 0.9rem;
+  padding: 24px 16px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }
+/* aca termina el footer */
 
-/* Tablet en adelante */
+/* tablet en adelante */
 @media (min-width: 768px) {
+  .marca {
+    font-size: 1.25rem;
+  }
+
+  .barra .navbar-nav {
+    padding-top: 0;
+  }
+
   .banner {
-    padding: 4rem 0;
+    padding-top: 80px;
+    padding-bottom: 80px;
   }
 
   .banner h1 {
-    font-size: 2.8rem;
+    font-size: 5rem;
   }
 
   .galeria {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
 
   .cabecera-perfil {

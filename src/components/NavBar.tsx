@@ -18,8 +18,12 @@ function NavBar() {
   return (
     <Navbar expand="md" className="barra" data-bs-theme="dark" collapseOnSelect>
       <Container>
-        <Navbar.Brand as={NavLink} to="/">
-          UnaHur Anti-Social Net
+        {/* logo y nombre */}
+        <Navbar.Brand as={NavLink} to="/" className="marca">
+          <span className="marca-logo">U</span>
+          <span>
+            UnaHur <span className="marca-resaltada">Anti-Social</span> Net
+          </span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="menu-principal" />
         <Navbar.Collapse id="menu-principal">
@@ -30,8 +34,8 @@ function NavBar() {
 
             {usuario ? (
               <>
-                <Nav.Link as={NavLink} to="/nuevo-post" eventKey="nuevo">
-                  Nuevo post
+                <Nav.Link as={NavLink} to="/nuevo-post" eventKey="nuevo" className="boton-destacado">
+                  + Nuevo post
                 </Nav.Link>
                 <Nav.Link as={NavLink} to="/perfil" eventKey="perfil">
                   @{usuario.nickName}
@@ -50,7 +54,7 @@ function NavBar() {
                 <Nav.Link as={NavLink} to="/login" eventKey="login">
                   Iniciar sesión
                 </Nav.Link>
-                <Nav.Link as={NavLink} to="/registro" eventKey="registro">
+                <Nav.Link as={NavLink} to="/registro" eventKey="registro" className="boton-destacado">
                   Registrarse
                 </Nav.Link>
               </>

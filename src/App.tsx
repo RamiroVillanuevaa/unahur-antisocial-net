@@ -7,6 +7,7 @@ import Login from './pages/Login'
 import Registro from './pages/Registro'
 import DetallePost from './pages/DetallePost'
 import Perfil from './pages/Perfil'
+import PerfilUsuario from './pages/PerfilUsuario'
 import NuevoPost from './pages/NuevoPost'
 import NoEncontrada from './pages/NoEncontrada'
 
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/registro" element={<Registro />} />
           <Route path="/post/:id" element={<DetallePost />} />
+          <Route path="/usuario/:id" element={<PerfilUsuario />} />
 
           <Route
             path="/perfil"
